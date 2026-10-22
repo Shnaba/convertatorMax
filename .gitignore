@@ -21,5 +21,30 @@ Thumbs.db
 # Fichiers de config locale éventuels
 *.env
 
-# Fichiers vidéo
-/media/
+# Fichiers texte
+*.txt
+
+# Fichiers générés
+# Word
+*.doc
+*.docx
+*.dot
+*.dotx
+*.docm
+~$*
+# Excel
+*.xls
+*.xlsx
+*.xlsm
+*.xlsb
+*.xlt
+*.xltx
+# PowerPoint
+*.ppt
+*.pptx
+*.pps
+*.ppsx
+*.pptm
+*.potx
+# PDF
+*.pdf
