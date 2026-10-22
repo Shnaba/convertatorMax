@@ -1,6 +1,5 @@
-package fr.greta.fichier;
+package fichier;
 
-import com.itextpdf.layout.element.Paragraph;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.util.Units;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;

@@ -1,4 +1,4 @@
-package fr.greta.fichier;
+package fichier;
 import fr.greta.stock.Produit;
 
 import java.io.BufferedReader;

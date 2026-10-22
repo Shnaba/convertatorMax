@@ -1,4 +1,4 @@
-package fr.greta.fichier;
+package fichier;
 
 import java.io.IOException;
 

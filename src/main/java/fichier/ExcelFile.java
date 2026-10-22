@@ -1,4 +1,4 @@
-package fr.greta.fichier;
+package fichier;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
