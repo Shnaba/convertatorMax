@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class FichierWord implements Fichier{
+public class FichierWord implements Fichier {
     private String file;
 
     public FichierWord(String file) {
@@ -30,9 +30,9 @@ public class FichierWord implements Fichier{
 
 
             //créer un paragraphe
-            XWPFParagraph paragraph= document.createParagraph();
+            XWPFParagraph paragraph = document.createParagraph();
             paragraph.setAlignment(ParagraphAlignment.LEFT);
-            XWPFRun run= paragraph.createRun();
+            XWPFRun run = paragraph.createRun();
             //ajout du titre - font-color- gras
             run.setText("15 OCTOBRE 2026");
             run.setFontFamily("Arial");
@@ -48,7 +48,7 @@ public class FichierWord implements Fichier{
             titre.setFontSize(20);
             titre.addBreak();
 
-            XWPFRun run2= paragraph.createRun();
+            XWPFRun run2 = paragraph.createRun();
             run2.setText("[INTERFACE]");
             run2.addBreak();
             run2.setText("Améliorations apportées au lecteur de rediffusions.");
@@ -62,7 +62,7 @@ public class FichierWord implements Fichier{
             run2.setText("  - Correction de quelques problèmes mineurs avec la recherche au sein d'un fichier de rediffusion.");
             run2.addBreak();
 
-            XWPFRun run3= paragraph.createRun();
+            XWPFRun run3 = paragraph.createRun();
             run3.addBreak();
             run3.setText("[DIVERS]");
             run3.addBreak();
@@ -78,10 +78,34 @@ public class FichierWord implements Fichier{
 
             document.write(monFichier);
             monFichier.close();
-            System.out.println("Le document "+ file + " a été créé avec succes");
+            System.out.println("Le document " + file + " a été créé avec succes");
 
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+
+    }
+
+
+    public void convertirDepuisTexte(String fichierTexte) throws IOException {
+        String contenu = Utils.lireFichier(fichierTexte);
+
+        try (XWPFDocument document = new XWPFDocument();
+             FileOutputStream monFichier = new FileOutputStream(file)) {
+
+            for (String ligne : contenu.split("\n")) {
+                XWPFParagraph paragraph = document.createParagraph();
+                paragraph.setAlignment(ParagraphAlignment.LEFT);
+
+                XWPFRun run = paragraph.createRun();
+                run.setText(ligne);
+                run.setFontFamily("Arial");
+                run.setFontSize(11);
+
+            }
+
+            document.write(monFichier);
+            System.out.println("Le document " + file + " a été créé");
         }
 
     }
