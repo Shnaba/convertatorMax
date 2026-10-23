@@ -2,7 +2,9 @@ import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.parser.PdfTextExtractor;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 
@@ -19,7 +21,17 @@ public class FichierPdf implements Fichier {
 
     @Override
     public void readFile() throws IOException {
-        //TODO
+        PdfReader pr = new PdfReader(this.fichier);
+        PdfDocument doc = new PdfDocument(pr);
+        int num = doc.getNumberOfPages();
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 1; i <= num; i++) {
+            String str = PdfTextExtractor.getTextFromPage(doc.getPage(i));
+            sb.append(str);
+        }
+        doc.close();
+        setData(sb.toString());
     }
 
     @Override

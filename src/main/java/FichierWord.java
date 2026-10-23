@@ -42,7 +42,7 @@ public class FichierWord implements Fichier {
         XWPFDocument document = new XWPFDocument(fis);
         XWPFWordExtractor extracteur = new XWPFWordExtractor(document);
         String texte = extracteur.getText();
-        System.out.println(texte);
+//        System.out.println(texte);
         setData(texte);
         fis.close();
     }

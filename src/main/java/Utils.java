@@ -1,7 +1,29 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Utils {
+
+    public static boolean fichierExiste(String fichier) {
+        File f = new File(fichier);
+        return f.canRead();
+    }
+
+    public static String getExtension(String fichier) {
+        String[] f = fichier.trim().split("\\.");
+        return f[f.length - 1];
+    }
+
+    public static String controleExtension(String fichier) {
+        List<String> extensionsValides = new ArrayList<>(Arrays.asList("txt", "docx", "pdf", "xlsx"));
+
+        String ext = getExtension(fichier);
+        if (extensionsValides.contains(ext))
+            return ext;
+        return "";
+    }
 
     // Transforme un string en un tableau en 2D (pas de gestion d'erreur)
     public static Object[][] stringTo2DTab(String s) {
