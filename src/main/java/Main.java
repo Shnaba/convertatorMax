@@ -2,7 +2,9 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        FichierWord word = new FichierWord("texte.docx");
-        word.convertirDepuisTexte("src/texte.txt");
+        String data = Utils.lireFichier("src/texte.txt");
+        FichierWord fw = new FichierWord("texte.docx");
+        fw.setData(data);
+        fw.writeFile();
     }
 }
