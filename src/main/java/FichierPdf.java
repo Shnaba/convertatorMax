@@ -1,6 +1,10 @@
+import com.itextpdf.io.font.constants.StandardFonts;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 
 import java.io.IOException;
 
@@ -26,6 +30,12 @@ public class FichierPdf implements Fichier {
         PdfDocument pdfDoc = new PdfDocument(writer);
         //creation du contenu de la page du document
         Document doc = new Document(pdfDoc);
+
+        PdfFont myFont = PdfFontFactory.createFont(StandardFonts.HELVETICA);
+        Paragraph p = new Paragraph();
+        p.add(this.data);
+        doc.add(p);
+        doc.close();
     }
 
     public String getFichier() {
