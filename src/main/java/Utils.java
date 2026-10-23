@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Scanner;
 
 public class Utils {
@@ -30,15 +28,4 @@ public class Utils {
         return tab;
     }
 
-    // Lis un fichier dans un String
-    public static String lireFichier(String fichier) throws FileNotFoundException {
-        File f = new File(fichier);
-        Scanner lecteur = new Scanner(f);
-        StringBuilder s = new StringBuilder();
-        while (lecteur.hasNext()) {
-            s.append(lecteur.nextLine());
-            s.append("\n");
-        }
-        return s.toString();
-    }
 }
